@@ -1,0 +1,22 @@
+{
+  "name": "BVOLT Academia",
+  "short_name": "BVOLT",
+  "description": "A sua melhor versão começa aqui — Guapimirim, RJ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#B8F000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

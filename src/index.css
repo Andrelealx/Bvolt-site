@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #080808;
+  --color-surface: #111111;
+  --color-surface-2: #1a1a1a;
+  --color-primary: #B8F000;
+  --color-primary-dark: #8fc200;
+  --color-accent: #FFFFFF;
+  --color-text: #F0F0F0;
+  --color-text-muted: #888888;
+  --color-border: #222222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Noise texture — grain sutil via CSS, sem SVG filter */
+.noise-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.012) 2px,
+      rgba(255,255,255,0.012) 4px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* (hero-glow removido — glow agora é inline no Hero.tsx sem transform JS) */
+
+/* Scroll animation */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 80ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 160ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 240ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 320ms; }
+.stagger-children > *:nth-child(6) { transition-delay: 400ms; }
+
+/* WhatsApp pulse */
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 240, 0, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(184, 240, 0, 0); }
+}
+
+.wa-pulse {
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+
+/* Hero entrance */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-el {
+  opacity: 0;
+  animation: heroFadeUp 0.7s ease forwards;
+}
+.hero-el-1 { animation-delay: 0.1s; }
+.hero-el-2 { animation-delay: 0.25s; }
+.hero-el-3 { animation-delay: 0.4s; }
+.hero-el-4 { animation-delay: 0.55s; }
+.hero-el-5 { animation-delay: 0.7s; }
+
+/* Green glow card hover */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 24px rgba(184, 240, 0, 0.18);
+  border-color: rgba(184, 240, 0, 0.5) !important;
+}
+
+/* FAQ accordion */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-answer.open {
+  max-height: 200px;
+}
+
+/* Gradient text — mantido apenas para uso pontual fora do hero */
+.gradient-text {
+  color: #B8F000;
+}
+
+/* drawer-overlay removido — blur só existe quando open=true via inline style */
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #B8F000; }
