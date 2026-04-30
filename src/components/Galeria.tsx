@@ -16,8 +16,6 @@ const fotos = [
 const videos = [
   '/fotosevideos/bvolt.academia.mp4',
   '/fotosevideos/bvolt.academia (1).mp4',
-  '/fotosevideos/djlouiseoficial.mp4',
-  '/fotosevideos/franciscenterguapi.mp4',
 ]
 
 const POSTER = '/fotosevideos/bvolt.academia_487532755_17887970298236688_7461216676606174773_n.jpg'
