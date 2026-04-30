@@ -3,27 +3,24 @@ import { useEffect, useRef, useState } from 'react'
 const INSTA = 'https://www.instagram.com/bvolt.academia/'
 
 const fotos = [
-  '/fotosevideos/bvolt.academia_486647117_17887703982236688_9167226951104866497_n.jpg',
-  '/fotosevideos/bvolt.academia_487217435_17887833564236688_3794778919397093058_n.jpg',
-  '/fotosevideos/bvolt.academia_487532755_17887970298236688_7461216676606174773_n.jpg',
-  '/fotosevideos/bvolt.academia_496557423_17892536865236688_8996537732074790439_n.jpg',
-  '/fotosevideos/bvolt.academia_516192393_17899835718236688_5287815090439304399_n.jpg',
-  '/fotosevideos/bvolt.academia_519819589_17901046797236688_2237980212244078924_n.jpg',
-  '/fotosevideos/bvolt.academia_526698605_17903105910236688_1793431826861254644_n.jpg',
-  '/fotosevideos/bvolt.academia_539562539_17906277552236688_2929594926043112521_n.jpg',
-  '/fotosevideos/bvolt.academia_540398917_17906277561236688_6212658996534662579_n.jpg',
-  '/fotosevideos/bvolt.academia_540619207_17906277534236688_5879815930483751496_n.jpg',
-  '/fotosevideos/bvolt.academia_562388765_17911042290236688_5761775995543296751_n.jpg',
-  '/fotosevideos/bvolt.academia_630150039_17924374683236688_1536547566867741529_n.jpg',
-  '/fotosevideos/bvolt.academia_649268733_17928582045236688_3605034589290661172_n.jpg',
+  '/fotosevideos/bvolt.academia_487532755_17887970298236688_7461216676606174773_n.jpg', // vista panorâmica academia
+  '/fotosevideos/bvolt.academia_487217435_17887833564236688_3794778919397093058_n.jpg', // equipamentos verde-neon
+  '/fotosevideos/bvolt.academia_486647117_17887703982236688_9167226951104866497_n.jpg', // halteres 10KG
+  '/fotosevideos/bvolt.academia_519819589_17901046797236688_2237980212244078924_n.jpg', // halteres 22.5KG estético
+  '/fotosevideos/bvolt.academia_630150039_17924374683236688_1536547566867741529_n.jpg', // homem treinando intensamente
+  '/fotosevideos/bvolt.academia_649268733_17928582045236688_3605034589290661172_n.jpg', // senhor treinando
+  '/fotosevideos/bvolt.academia_516192393_17899835718236688_5287815090439304399_n.jpg', // mulher alongando kettlebells
+  '/fotosevideos/bvolt.academia_540619207_17906277534236688_5879815930483751496_n.jpg', // jardim vertical BVOLT
 ]
 
 const videos = [
   '/fotosevideos/bvolt.academia.mp4',
   '/fotosevideos/bvolt.academia (1).mp4',
+  '/fotosevideos/djlouiseoficial.mp4',
+  '/fotosevideos/franciscenterguapi.mp4',
 ]
 
-const POSTER = '/fotosevideos/bvolt.academia_496557423_17892536865236688_8996537732074790439_n.jpg'
+const POSTER = '/fotosevideos/bvolt.academia_487532755_17887970298236688_7461216676606174773_n.jpg'
 
 type Aba = 'todos' | 'fotos' | 'videos'
 
