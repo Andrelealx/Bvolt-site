@@ -1,0 +1,47 @@
+# Correção assistida (Atlas Command Center).
+# O agente da Atlas abre uma issue com a etiqueta "atlas-fix" e a menção @claude, contendo as evidências.
+# O Claude investiga, corrige num branch próprio e explica na issue. Nada é publicado aqui:
+# o Pull Request é aberto pelo agente, validado pelo CI e pela prévia da Vercel, e só entra
+# na main depois da aprovação humana no Telegram.
+name: Atlas · correção assistida
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+# Uma correção por vez neste repositório.
+concurrency:
+  group: atlas-fix
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'atlas-fix') &&
+      !github.event.issue.pull_request &&
+      (github.event_name == 'issues' || contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: |
+            --model claude-sonnet-5
+            --max-turns 30
+            --allowedTools "Bash(npm ci),Bash(npm run lint),Bash(npm run build),Bash(git status),Bash(git diff:*),Bash(git log:*)"
